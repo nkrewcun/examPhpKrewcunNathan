@@ -72,22 +72,14 @@ function validateSkillForm()
 function showSkills($skills, $isDashboard)
 {
     if ($skills) {
-
-        echo '<table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Titre</th>
-            <th scope="col">Note</th>';
-        if ($isDashboard) {
-            echo '<th scope="col">Actions</th>';
-        }
-        echo '</tr>
-        </thead>
-        <tbody>';
         foreach ($skills as $skill) {
-            echo '<tr>';
-            echo '<td>' . $skill['titre'] . '</td>';
-            echo '<td>';
+            echo '
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-12">
+                        <div class="card-body">
+                            <h5 class="card-title">' . $skill['titre'] . '</h5>
+                            <p class="card-text">';
             for ($i = 1; $i <= 5; $i++) {
                 if ($i <= $skill['note']) {
                     echo '<i class="fas fa-star"></i>';
@@ -95,16 +87,19 @@ function showSkills($skills, $isDashboard)
                     echo '<i class="far fa-star"></i>';
                 }
             }
-            echo '</td>';
-            if ($isDashboard) {
-                echo '<td>';
-                echo '<a href="edit_skill.php?id=' . $skill['id'] . '" role="button" class="btn btn-secondary"><i class="fas fa-pen"></i></a>';
-                echo '<a href="delete_skill.php?id=' . $skill['id'] . '" role="button" class="btn btn-danger"><i class="fas fa-trash"></i></a>';
-                echo '</td>';
+            echo '</p>';
+            if($isDashboard) {
+                echo '<p class="card-text actionButtons">
+<a href="edit_experience.php?id=' . $skill['id'] . '" role="button" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
+<a href="delete_experience.php?id=' . $skill['id'] . '" role="button" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        </p>';
             }
+
+            echo '</div>
+                    </div>
+                </div>
+            </div>';
         }
-        echo '</tbody>
-    </table>';
     } else {
         echo '<p>Aucune compétence pour le moment</p>';
     }

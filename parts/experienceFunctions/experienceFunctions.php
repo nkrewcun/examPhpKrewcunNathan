@@ -84,41 +84,32 @@ function validateExperienceForm()
 function showExperiences($experiences, $isDashboard)
 {
     if ($experiences) {
-
-        echo '<table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Titre</th>
-            <th scope="col">Description</th>
-            <th scope="col">Date de début</th>
-            <th scope="col">Date de fin</th>';
-        if ($isDashboard) {
-            echo '<th scope="col">Actions</th>';
-        }
-        echo '</tr>
-        </thead>
-        <tbody>';
         foreach ($experiences as $experience) {
-            echo '<tr>';
-            echo '<td>' . $experience['titre'] . '</td>';
-            echo '<td>' . $experience['description'] . '</td>';
-            echo '<td>' . date('d/m/Y', strtotime($experience['date_debut'])) . '</td>';
-            echo '<td>';
+            echo '
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-12">
+                        <div class="card-body">
+                            <h5 class="card-title">Du ' . date('d/m/Y', strtotime($experience['date_debut']));
             if ($experience['date_fin']) {
-                echo date('d/m/Y', strtotime($experience['date_fin']));
+                echo ' au ' . date('d/m/Y', strtotime($experience['date_fin']));
             } else {
-                echo 'En cours';
+                echo ' à aujourd\'hui';
             }
-            echo '</td>';
-            if ($isDashboard) {
-                echo '<td>';
-                echo '<a href="edit_experience.php?id=' . $experience['id'] . '" role="button" class="btn btn-secondary"><i class="fas fa-pen"></i></a>';
-                echo '<a href="delete_experience.php?id=' . $experience['id'] . '" role="button" class="btn btn-danger"><i class="fas fa-trash"></i></a>';
-                echo '</td>';
+            echo ' : ' . $experience['titre'] . '</h5>
+                            <p class="card-text">' . $experience['description'] . '</p>';
+            if($isDashboard) {
+                echo '<p class="card-text actionButtons">
+<a href="edit_experience.php?id=' . $experience['id'] . '" role="button" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
+<a href="delete_experience.php?id=' . $experience['id'] . '" role="button" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        </p>';
             }
+                            
+                    echo '</div>
+                    </div>
+                </div>
+            </div>';
         }
-        echo '</tbody>
-    </table>';
     } else {
         echo '<p>Aucune expérience pour le moment</p>';
     }

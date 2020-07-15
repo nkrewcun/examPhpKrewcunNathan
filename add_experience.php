@@ -18,8 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
-    <h2>Ajouter une expérience : </h2>
-    <div class="container">
+    <div class="container-md form ">
+        <h2>Ajouter une expérience</h2>
         <form method="post" action="add_experience.php">
             <div class="form-group">
                 <div class="form-group">
@@ -38,10 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="date_fin">Date de fin (optionnel)</label>
                     <input type="date" class="form-control" id="date_fin" name="date_fin"/>
                 </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-dark" placeholder="Ajouter"/>
+                    <a href="dashboard.php" class="btn btn-dark">Retour</a>
+                </div>
             </div>
-
-            <input type="submit" placeholder="Ajouter"/>
-            <a href="dashboard.php">Retour</a>
             <?php
             displayErrors($errors);
             ?>

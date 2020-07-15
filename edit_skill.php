@@ -29,8 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
-    <h2>Modifier une compétence : </h2>
-    <div class="container">
+    <div class="container-md form">
+        <h2>Modifier une compétence</h2>
         <form method="post" action="edit_skill.php?id=<?php echo $skill['id']; ?>">
             <div class="form-group">
                 <div class="form-group">
@@ -43,10 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="number" class="form-control" id="note" name="note" required min="1" max="5"
                            value="<?php echo $skill['note']; ?>">
                 </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-dark"  placeholder="Modifier"/>
+                    <a href="dashboard.php" class="btn btn-dark" >Retour</a>
+                </div>
             </div>
-
-            <input type="submit" placeholder="Modifier"/>
-            <a href="dashboard.php">Retour</a>
             <?php
             displayErrors($errors);
             ?>

@@ -11,19 +11,22 @@ function displayCVs($pdo, $usersPDO)
         $skills = $skillsPDO->fetchAll();
         $experiences = $experiencesPDO->fetchAll();
         if ($skills || $experiences) {
-            echo '<h2>CV de ' . $user['prenom'] . ' ' . $user['nom'] . '</h2>';
+            echo '<div class="cv container"><h2>CV de ' . $user['prenom'] . ' ' . $user['nom'] . '</h2>';
+            echo '<div class="container-md">';
             if ($skills) {
-                echo '<h3>Compétences</h3>';
+                echo '<div><h3>Compétences</h3></div>';
                 showSkills($skills, false);
             }
             if ($experiences) {
-                echo '<h3>Expériences</h3>';
+                echo '<div><h3>Expériences</h3></div>';
                 showExperiences($experiences, false);
             }
+            echo '</div>';
         }
+        echo '</div>';
+        $experiencesPDO->closeCursor();
+        $skillsPDO->closeCursor();
     }
-    $experiencesPDO->closeCursor();
-    $skillsPDO->closeCursor();
     $usersPDO->closeCursor();
 }
 
