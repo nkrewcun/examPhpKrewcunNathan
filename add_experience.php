@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <input type="submit" placeholder="Ajouter"/>
+            <a href="dashboard.php">Retour</a>
             <?php
             displayErrors($errors);
             ?>
