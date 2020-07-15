@@ -1,5 +1,11 @@
 <?php
 
+function getUsers($pdo) {
+    $query = $pdo->prepare('SELECt * FROM user');
+    $query->execute();
+    return $query;
+}
+
 function getUserByNameSurnameEmail($pdo)
 {
 
