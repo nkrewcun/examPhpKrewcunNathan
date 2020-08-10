@@ -90,8 +90,8 @@ function showSkills($skills, $isDashboard)
             echo '</p>';
             if($isDashboard) {
                 echo '<p class="card-text actionButtons">
-<a href="edit_experience.php?id=' . $skill['id'] . '" role="button" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
-<a href="delete_experience.php?id=' . $skill['id'] . '" role="button" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+<a href="edit_skill.php?id=' . $skill['id'] . '" role="button" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
+<a href="delete_skill.php?id=' . $skill['id'] . '" role="button" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                         </p>';
             }
 
